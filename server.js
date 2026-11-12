@@ -1,4 +1,5 @@
 import express from "express";
+import tasksRoutes from "./resource/routes/tasks.routes.js";
 
 const app = express();
 const port = 3000;
@@ -10,6 +11,7 @@ const port = 3000;
 // ];
 
  app.use(express.json());
+ app.use("/api/tasks", tasksRoutes);
 
 // app.get("/api/tasks", (req, res, next) => {
 //     try{

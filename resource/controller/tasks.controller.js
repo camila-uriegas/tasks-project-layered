@@ -12,6 +12,19 @@ const getTasks = (req, res, next) => {
     }
 };
 
+const createTask = (req, res, next) => {
+    try{
+        const task = tasksServices.createTask(req.body);
+        res.status(201).json({
+            success: true,
+            data: task
+        });
+    }catch(error){
+        next(error);
+    }
+}
+
 export default {
-    getTasks
+    getTasks,
+    createTask
 };

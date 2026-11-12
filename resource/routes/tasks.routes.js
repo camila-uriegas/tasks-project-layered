@@ -1,18 +1,12 @@
 import express from "express";
-
+import tasksController from "../controller/tasks.controller.js";
+import tasksMiddleware from "../middleware/tasks.middleware.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.json(tasks);
-});
+router.get("/", tasksController.getTasks);
+router.post("/", tasksMiddleware.validateNewTask, tasksController.createTask);
 
 
-const tasks = [
-    {id: "1", title: "Take a shower", status: "false"},
-    {id: "2", title: "Get wingstop for dinner", status: "false"},
-    {id: "3", title: "Work on the project for 3330", status: "true"},
-];
 
-
-export default tasks;
+export default router;
